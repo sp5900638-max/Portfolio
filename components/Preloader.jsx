@@ -20,7 +20,7 @@ export default function Preloader({ onLoaded }) {
   const [progress, setProgress] = useState(0);
   const [isDone, setIsDone] = useState(false);
   const [currentLogIndex, setCurrentLogIndex] = useState(0);
-  const [isAudioEnabled, setIsAudioEnabled] = useState(false);
+  const [isAudioEnabled, setIsAudioEnabled] = useState(true);
   const canvasRef = useRef(null);
   const audioCtxRef = useRef(null);
 
@@ -37,8 +37,37 @@ export default function Preloader({ onLoaded }) {
     "[10/10] SYSTEM BREACH COMPLETE // WELCOME PRAVEEN.S",
   ];
 
-  // Optional Cyber Sound Effects using Web Audio API
-  const playBeep = (freq = 800, type = 'sine', duration = 0.04) => {
+  // Auto-unlock AudioContext on first page interaction/gesture
+  useEffect(() => {
+    const unlockAudio = () => {
+      try {
+        if (!audioCtxRef.current) {
+          audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtxRef.current.state === 'suspended') {
+          audioCtxRef.current.resume();
+        }
+      } catch (e) {
+        // audio context handling
+      }
+    };
+
+    unlockAudio();
+    window.addEventListener('pointerdown', unlockAudio, { once: true });
+    window.addEventListener('keydown', unlockAudio, { once: true });
+    window.addEventListener('click', unlockAudio, { once: true });
+    window.addEventListener('touchstart', unlockAudio, { once: true });
+
+    return () => {
+      window.removeEventListener('pointerdown', unlockAudio);
+      window.removeEventListener('keydown', unlockAudio);
+      window.removeEventListener('click', unlockAudio);
+      window.removeEventListener('touchstart', unlockAudio);
+    };
+  }, []);
+
+  // Cyber Sound Effects using Web Audio API (tactile keyboard clicks & telemetry blips)
+  const playBeep = (freq = 800, type = 'sawtooth', duration = 0.035, vol = 0.04) => {
     if (!isAudioEnabled) return;
     try {
       if (!audioCtxRef.current) {
@@ -52,8 +81,8 @@ export default function Preloader({ onLoaded }) {
       const gain = ctx.createGain();
       osc.type = type;
       osc.frequency.setValueAtTime(freq, ctx.currentTime);
-      gain.gain.setValueAtTime(0.04, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+      gain.gain.setValueAtTime(vol, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start();
@@ -182,7 +211,8 @@ export default function Preloader({ onLoaded }) {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          playBeep(1200, 'triangle', 0.25);
+          playBeep(680, 'triangle', 0.12, 0.08);
+          setTimeout(() => playBeep(1040, 'sine', 0.3, 0.09), 110);
           setTimeout(() => {
             setIsDone(true);
             if (onLoaded) onLoaded();
@@ -205,8 +235,8 @@ export default function Preloader({ onLoaded }) {
         const capped = Math.min(next, 100);
 
         // Sound blip on keystrokes
-        if (Math.random() > 0.45) {
-          playBeep(420 + Math.random() * 550, 'sawtooth', 0.03);
+        if (Math.random() > 0.42) {
+          playBeep(450 + Math.random() * 520, 'sawtooth', 0.03, 0.035);
         }
 
         // Stepper for 10-step log message
@@ -214,6 +244,9 @@ export default function Preloader({ onLoaded }) {
           Math.floor((capped / 100) * terminalLogs.length),
           terminalLogs.length - 1
         );
+        if (logIdx !== currentLogIndex) {
+          playBeep(960, 'sine', 0.06, 0.05);
+        }
         setCurrentLogIndex(logIdx);
 
         return capped;
