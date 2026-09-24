@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Praveen | Backend Architecture & RAG Systems | NIE Mysuru</title>
+  <meta name="description" content="Production-grade engineering portfolio of Praveen, 2nd-year CSE at The National Institute of Engineering (NIE), Mysuru. Specializing in Python backend architecture, FastAPI, Qdrant vector search, and Docker microservices." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f5ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='m10 15 5-3-5-3v6Z'/></svg>" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- Top Scroll Progress Indicator (Thin 2px line) -->
+  <div id="scroll-progress" class="scroll-progress-bar"></div>
+
+  <!-- 3D Scrolling WebGL Landing Platform Canvas -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Sticky Glassmorphic Header -->
+  <header class="nav-header">
+    <nav class="nav-container">
+      <a href="#hero" class="nav-brand">
+        <span>PRAVEEN</span>
+        <span class="nav-brand-slash">//</span>
+        <span>BACKEND ENG</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#architecture" class="nav-link">Architecture</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#telemetry" class="nav-link">Telemetry</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="status-pill">
+          <span class="pulse-dot"></span>
+          <span>2nd Yr CSE @ NIE Mysuru</span>
+        </div>
+
+        <a href="https://github.com/sp5900638-max" target="_blank" rel="noopener noreferrer" class="btn-nav-gh">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 4.435 9.795 10.59 11.235.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer">
+    <ul class="mobile-nav-links">
+      <li><a href="#about" class="nav-link mobile-link">About</a></li>
+      <li><a href="#architecture" class="nav-link mobile-link">Architecture</a></li>
+      <li><a href="#skills" class="nav-link mobile-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link mobile-link">Projects</a></li>
+      <li><a href="#telemetry" class="nav-link mobile-link">Telemetry</a></li>
+      <li><a href="#contact" class="nav-link mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Wrapper -->
+  <main class="content-wrapper">
+    <!-- Hero Section with 3D Landing Platform Framing -->
+    <section id="hero" class="hero-section">
+      <div class="hero-grid">
+        <!-- Left: Technical Identity & Call to Actions -->
+        <div class="hero-content reveal">
+          <div class="hero-status-tag">
+            <span class="status-indicator-dot"></span>
+            <span>PRODUCTION RUNTIME: ACTIVE</span>
+          </div>
+
+          <h1 class="hero-title font-display">
+            Engineering Scalable Backends & Vector Pipelines.
+          </h1>
+
+          <p class="hero-subtitle">
+            Second-year Computer Science & Engineering undergraduate at <strong>The National Institute of Engineering (NIE), Mysuru</strong>. Building deterministic <strong>REST APIs</strong>, sub-100ms <strong>Qdrant RAG vector retrieval pipelines</strong>, and containerized <strong>Docker</strong> microservices architected for zero downtime under high concurrent workloads.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#architecture" class="btn-primary">
+              <span>Inspect System Architecture</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <a href="https://github.com/sp5900638-max" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 4.435 9.795 10.59 11.235.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              <span>GitHub Repositories</span>
+            </a>
+          </div>
+
+          <!-- Telemetry Stats Grid -->
+          <div class="hero-stats-grid reveal reveal-stagger">
+            <div class="stat-card">
+              <div class="stat-number" style="color: var(--cyan-primary);">&lt; 38ms</div>
+              <div class="stat-label font-mono">P99 REST LATENCY</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" style="color: #c084fc;">1536-d</div>
+              <div class="stat-label font-mono">QDRANT VECTOR EMBEDDING</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" style="color: #34d399;">10k+ rps</div>
+              <div class="stat-label font-mono">CONCURRENCY CAP</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" style="color: #ffffff;">99.98%</div>
+              <div class="stat-label font-mono">RUNTIME STABILITY</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: 3D Landing Platform Framing & Live HUD Telemetry Card -->
+        <div class="hero-3d-stage reveal">
+          <div class="platform-hud-card font-mono">
+            <div class="platform-hud-header">
+              <div class="hud-status-badge">
+                <span class="hud-blink"></span>
+                <span>3D PLATFORM DOCK // ACTIVE</span>
+              </div>
+              <span class="hud-tag">HEX-TIER 01</span>
+            </div>
+
+            <div class="platform-hud-body">
+              <div class="hud-stat-line">
+                <span class="hud-dim">PLATFORM STATE:</span>
+                <span class="hud-val hud-cyan">LEVITATING (ZERO-G)</span>
+              </div>
+              <div class="hud-stat-line">
+                <span class="hud-dim">VECTOR PAYLOAD:</span>
+                <span class="hud-val hud-violet">1536-D TORUS KNOT</span>
+              </div>
+              <div class="hud-stat-line">
+                <span class="hud-dim">STATION COORD:</span>
+                <span class="hud-val">NIE MYSURU [12.3051° N, 76.6551° E]</span>
+              </div>
+              <div class="hud-stat-line">
+                <span class="hud-dim">SCROLL KINEMATICS:</span>
+                <span class="hud-val hud-emerald">DYNAMIC 3D TILT &amp; ZOOM</span>
+              </div>
+            </div>
+
+            <div class="platform-hud-footer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-primary)" stroke-width="2"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+              <span>SCROLL DOWN TO ENGAGE BLUEPRINT TILT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-wrapper">
+      <div class="reveal">
+        <div class="section-tag">ENGINEERING CONTEXT & IDENTITY</div>
+        <h2 class="section-title font-display">Praveen — System Profile</h2>
+        <p class="section-desc">
+          Undergraduate engineer grounded in core computer science principles, operating at the intersection of high-concurrency Python server architectures and vector retrieval systems.
+        </p>
+      </div>
+
+      <div class="stat-card reveal" style="padding: 2rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+          <div>
+            <h3 class="font-display" style="font-size: 1.25rem; color: #fff; margin-bottom: 0.8rem;">
+              Focus Areas & Academic Grounding
+            </h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem;">
+              Pursuing a Bachelor of Engineering in Computer Science & Engineering at <strong>The National Institute of Engineering (NIE), Mysuru</strong> (2nd year).
+            </p>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+              My focus centers on designing production REST APIs with <strong>FastAPI</strong>, non-blocking <strong>AsyncIO</strong> event loops, high-dimensional vector search utilizing <strong>Qdrant</strong>, and reproducible, non-root microservice deployments with <strong>Docker</strong> and <strong>Linux</strong>.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem;">
+            <div class="font-mono" style="font-size: 0.76rem; color: var(--cyan-primary); margin-bottom: 1rem;">
+              SYSTEM TELEMETRY // IDENTITY MATRIX
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; font-family: 'Fira Code', monospace; font-size: 0.84rem;">
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-subtle); padding-bottom: 0.4rem;">
+                <span style="color: var(--text-muted);">Name:</span>
+                <span style="color: #fff;">Praveen</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-subtle); padding-bottom: 0.4rem;">
+                <span style="color: var(--text-muted);">Institution:</span>
+                <span style="color: #fff;">NIE Mysuru (KA, India)</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-subtle); padding-bottom: 0.4rem;">
+                <span style="color: var(--text-muted);">Program:</span>
+                <span style="color: #fff;">B.E. Computer Science (2nd Year)</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-subtle); padding-bottom: 0.4rem;">
+                <span style="color: var(--text-muted);">Primary Runtime:</span>
+                <span style="color: #38bdf8;">Python 3.11+ • Linux • Docker</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-subtle); padding-bottom: 0.4rem;">
+                <span style="color: var(--text-muted);">Direct Email:</span>
+                <span style="color: #34d399;">sp59600638@gmail.com</span>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-muted);">GitHub:</span>
+                <span style="color: #c084fc;">sp5900638-max</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- System Architecture Diagram (Static Flow) -->
+    <section id="architecture" class="section-wrapper">
+      <div class="reveal">
+        <div class="section-tag">SYSTEM TOPOLOGY & DATA FLOW</div>
+        <h2 class="section-title font-display">System Architecture Diagram</h2>
+        <p class="section-desc">
+          A static, production-grade microservice flow diagram of an autonomous RAG vector retrieval pipeline engineered with FastAPI, Qdrant, and MySQL.
+        </p>
+      </div>
+
+      <div class="arch-diagram-card reveal">
+        <!-- Static Diagram Flow Cards -->
+        <div class="arch-flow-flex reveal-stagger">
+          <!-- Step 1 -->
+          <div class="arch-node">
+            <div class="arch-node-step">01. INGEST</div>
+            <div class="arch-node-name">Client Query</div>
+            <div class="arch-node-tech">HTTP/2 • JSON / SSE Stream</div>
+            <div class="arch-node-badge">Overhead: &lt; 2ms</div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="arch-node">
+            <div class="arch-node-step">02. GATEWAY</div>
+            <div class="arch-node-name">FastAPI Gateway / Auth</div>
+            <div class="arch-node-tech">Pydantic v2 • JWT Middleware</div>
+            <div class="arch-node-badge">Parse: &lt; 1ms</div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="arch-node">
+            <div class="arch-node-step">03. VECTOR ENGINE</div>
+            <div class="arch-node-name">RAG Search Engine</div>
+            <div class="arch-node-tech">1536-d Dense Vectorizer</div>
+            <div class="arch-node-badge">Embed: ~22ms</div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="arch-node">
+            <div class="arch-node-step">04. STORAGE</div>
+            <div class="arch-node-name">Qdrant DB & MySQL</div>
+            <div class="arch-node-tech">HNSW Graph + Pool=20</div>
+            <div class="arch-node-badge">Search: &lt; 18ms</div>
+          </div>
+        </div>
+
+        <div class="arch-flow-annotation font-mono">
+          <span style="color: var(--cyan-primary);">PIPELINE SPEC:</span> [Client Query] ──&gt; [FastAPI Gateway / Auth] ──&gt; [RAG Search Engine] ──&gt; [Qdrant Vector DB &amp; MySQL]
+          <br />
+          <span style="color: var(--text-muted);">Flow Mechanics: Stateless bearer token authorization, asynchronous connection pooling, and sub-120ms cosine distance retrieval across 50,000+ vector chunks.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Competency Matrix -->
+    <section id="skills" class="section-wrapper">
+      <div class="reveal">
+        <div class="section-tag">COMPETENCY MATRIX</div>
+        <h2 class="section-title font-display">Technical Matrix</h2>
+        <p class="section-desc">
+          Core engineering competencies organized across language runtimes, backend frameworks, data stores, and container infrastructure.
+        </p>
+      </div>
+
+      <div class="matrix-grid reveal reveal-stagger">
+        <!-- Card 1 -->
+        <div class="matrix-card">
+          <div class="matrix-category-header">
+            <h3 class="matrix-category-title font-display">Languages & Runtimes</h3>
+          </div>
+          <p class="matrix-desc">Structured, type-annotated, and memory-conscious software engineering.</p>
+          <div class="matrix-skills-wrap">
+            <span class="matrix-pill cyan">Python (3.11+)</span>
+            <span class="matrix-pill cyan">SQL (ANSI/MySQL)</span>
+            <span class="matrix-pill">JavaScript (ES6+)</span>
+            <span class="matrix-pill">Bash / Shell</span>
+            <span class="matrix-pill">C / Data Structures</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="matrix-card">
+          <div class="matrix-category-header">
+            <h3 class="matrix-category-title font-display">Frameworks & APIs</h3>
+          </div>
+          <p class="matrix-desc">Asynchronous microservices, strict schema validation, and RESTful design.</p>
+          <div class="matrix-skills-wrap">
+            <span class="matrix-pill cyan">FastAPI</span>
+            <span class="matrix-pill cyan">Asynchronous I/O</span>
+            <span class="matrix-pill">Flask</span>
+            <span class="matrix-pill">RESTful Architecture</span>
+            <span class="matrix-pill">Pydantic v2</span>
+            <span class="matrix-pill">SQLAlchemy ORM</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="matrix-card">
+          <div class="matrix-category-header">
+            <h3 class="matrix-category-title font-display">Storage & Vectors</h3>
+          </div>
+          <p class="matrix-desc">High-dimensional vector indexing, connection pooling, and persistence.</p>
+          <div class="matrix-skills-wrap">
+            <span class="matrix-pill emerald">Qdrant Vector Engine</span>
+            <span class="matrix-pill emerald">MySQL (InnoDB)</span>
+            <span class="matrix-pill">MongoDB</span>
+            <span class="matrix-pill">SQLite</span>
+            <span class="matrix-pill">Redis Caching</span>
+            <span class="matrix-pill">HNSW Graph Indexing</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="matrix-card">
+          <div class="matrix-category-header">
+            <h3 class="matrix-category-title font-display">DevOps & Infrastructure</h3>
+          </div>
+          <p class="matrix-desc">Multi-stage containerization, Linux systems management, and CI/CD.</p>
+          <div class="matrix-skills-wrap">
+            <span class="matrix-pill cyan">Docker</span>
+            <span class="matrix-pill cyan">Git / GitHub</span>
+            <span class="matrix-pill">Container Networking</span>
+            <span class="matrix-pill">Linux / Bash</span>
+            <span class="matrix-pill">Docker Compose</span>
+            <span class="matrix-pill">Microservice Isolation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architectural Case Studies -->
+    <section id="projects" class="section-wrapper">
+      <div class="reveal">
+        <div class="section-tag">ENGINEERED PRODUCTION SYSTEMS</div>
+        <h2 class="section-title font-display">Architectural Case Studies</h2>
+        <p class="section-desc">
+          Case studies documenting engineering problem statements, architectural trade-offs, and verified benchmark metrics.
+        </p>
+      </div>
+
+      <div class="case-studies-grid reveal reveal-stagger">
+        <!-- Case Study 1 -->
+        <div class="case-card">
+          <div>
+            <div class="case-header">
+              <span class="case-badge">RAG / VECTOR RETRIEVAL</span>
+              <span class="font-mono" style="font-size: 0.75rem; color: #10b981;">● PRODUCTION</span>
+            </div>
+
+            <h3 class="case-title font-display">Autonomous Vector RAG Engine</h3>
+
+            <div class="case-section-block">
+              <div class="case-label">Problem Statement:</div>
+              <div class="case-text">
+                Ground generative LLM reasoning with sub-120ms semantic retrieval across 50,000+ document chunks without blocking the async event loop during concurrent ingests.
+              </div>
+            </div>
+
+            <div class="case-section-block">
+              <div class="case-label">Architectural Solution:</div>
+              <div class="case-text">
+                Integrated Qdrant HNSW vector graphs with cosine distance metrics. Built an asynchronous FastAPI ingest broker with background queue processing and confidence score thresholding.
+              </div>
+            </div>
+
+            <div class="case-benchmark-row">
+              <div>
+                <div class="benchmark-val" style="color: var(--cyan-primary);">&lt; 24ms</div>
+                <div class="benchmark-caption font-mono">P95 VECTOR SEARCH</div>
+              </div>
+              <div>
+                <div class="benchmark-val" style="color: #c084fc;">99.4%</div>
+                <div class="benchmark-caption font-mono">TOP-3 PRECISION</div>
+              </div>
+            </div>
+
+            <div class="case-stack-tags">
+              <span class="matrix-pill">Python 3.12</span>
+              <span class="matrix-pill">FastAPI</span>
+              <span class="matrix-pill">Qdrant</span>
+              <span class="matrix-pill">Docker</span>
+              <span class="matrix-pill">AsyncIO</span>
+            </div>
+          </div>
+
+          <div class="case-actions">
+            <button class="btn-inspect view-arch-btn" data-project-id="rag-engine">
+              <span>Inspect Architecture</span>
+            </button>
+            <a href="https://github.com/sp5900638-max" target="_blank" rel="noopener noreferrer" class="btn-case-gh" title="Inspect Code on GitHub">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 4.435 9.795 10.59 11.235.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div class="case-card">
+          <div>
+            <div class="case-header">
+              <span class="case-badge violet">REST API / MICROSERVICE</span>
+              <span class="font-mono" style="font-size: 0.75rem; color: #10b981;">● PRODUCTION</span>
+            </div>
+
+            <h3 class="case-title font-display">High-Throughput Microservice API</h3>
+
+            <div class="case-section-block">
+              <div class="case-label">Problem Statement:</div>
+              <div class="case-text">
+                Handle high concurrent authentication and query services sustaining 10,000+ rps with zero thread pool exhaustion and sub-50ms latency under sustained load.
+              </div>
+            </div>
+
+            <div class="case-section-block">
+              <div class="case-label">Architectural Solution:</div>
+              <div class="case-text">
+                Configured async SQLAlchemy connection pools over MySQL 8.0 with tuned queue depths. Implemented HMAC-SHA256 JWT bearer middleware and Rust-based Pydantic v2 validation.
+              </div>
+            </div>
+
+            <div class="case-benchmark-row">
+              <div>
+                <div class="benchmark-val" style="color: var(--cyan-primary);">&lt; 38ms</div>
+                <div class="benchmark-caption font-mono">P99 API LATENCY</div>
+              </div>
+              <div>
+                <div class="benchmark-val" style="color: #34d399;">10k+ rps</div>
+                <div class="benchmark-caption font-mono">THROUGHPUT CAP</div>
+              </div>
+            </div>
+
+            <div class="case-stack-tags">
+              <span class="matrix-pill">FastAPI</span>
+              <span class="matrix-pill">MySQL 8.0</span>
+              <span class="matrix-pill">SQLAlchemy</span>
+              <span class="matrix-pill">Pydantic v2</span>
+              <span class="matrix-pill">Docker</span>
+            </div>
+          </div>
+
+          <div class="case-actions">
+            <button class="btn-inspect view-arch-btn" data-project-id="microservice-api">
+              <span>Inspect Architecture</span>
+            </button>
+            <a href="https://github.com/sp5900638-max" target="_blank" rel="noopener noreferrer" class="btn-case-gh" title="Inspect Code on GitHub">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 4.435 9.795 10.59 11.235.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Case Study 3 -->
+        <div class="case-card">
+          <div>
+            <div class="case-header">
+              <span class="case-badge">DISTRIBUTED BROKER / EVENT</span>
+              <span class="font-mono" style="font-size: 0.75rem; color: #10b981;">● PRODUCTION</span>
+            </div>
+
+            <h3 class="case-title font-display">Async Task & Telemetry Broker</h3>
+
+            <div class="case-section-block">
+              <div class="case-label">Problem Statement:</div>
+              <div class="case-text">
+                Offload resource-heavy document parsing and metric aggregation from synchronous HTTP endpoints with automatic failure retry and audit persistence.
+              </div>
+            </div>
+
+            <div class="case-section-block">
+              <div class="case-label">Architectural Solution:</div>
+              <div class="case-text">
+                Engineered an asynchronous worker pattern with exponential backoff and dead-letter queues. Stored semi-structured log events in MongoDB and lightweight state in SQLite.
+              </div>
+            </div>
+
+            <div class="case-benchmark-row">
+              <div>
+                <div class="benchmark-val" style="color: var(--cyan-primary);">&lt; 5ms</div>
+                <div class="benchmark-caption font-mono">DISPATCH OVERHEAD</div>
+              </div>
+              <div>
+                <div class="benchmark-val" style="color: #34d399;">100%</div>
+                <div class="benchmark-caption font-mono">DLQ RECOVERY</div>
+              </div>
+            </div>
+
+            <div class="case-stack-tags">
+              <span class="matrix-pill">Python</span>
+              <span class="matrix-pill">MongoDB</span>
+              <span class="matrix-pill">SQLite</span>
+              <span class="matrix-pill">Docker</span>
+              <span class="matrix-pill">Linux</span>
+            </div>
+          </div>
+
+          <div class="case-actions">
+            <button class="btn-inspect view-arch-btn" data-project-id="telemetry-broker">
+              <span>Inspect Architecture</span>
+            </button>
+            <a href="https://github.com/sp5900638-max" target="_blank" rel="noopener noreferrer" class="btn-case-gh" title="Inspect Code on GitHub">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 4.435 9.795 10.59 11.235.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live System Telemetry / Terminal Console -->
+    <section id="telemetry" class="section-wrapper">
+      <div class="reveal">
+        <div class="section-tag">LIVE RUNTIME & TELEMETRY LOGS</div>
+        <h2 class="section-title font-display">System Telemetry & Terminal</h2>
+        <p class="section-desc">
+          Interactive CLI simulating an active FastAPI / Linux environment. Inspect running microservices, benchmark latency percentiles, and simulate vector embeddings.
+        </p>
+      </div>
+
+      <div class="terminal-wrapper reveal">
+        <div class="terminal-box">
+          <div class="terminal-topbar">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="terminal-prompt-title">praveen@nie-cluster: ~/backend-runtime</div>
+            <button id="terminal-clear-btn" class="chip-btn font-mono">[clear]</button>
+          </div>
+
+          <div id="terminal-body" class="terminal-body">
+            <div id="terminal-output" class="terminal-output"></div>
+
+            <div class="terminal-input-row">
+              <span class="prompt-prefix font-mono">praveen@nie-cluster:~$</span>
+              <input type="text" id="terminal-input" class="terminal-input font-mono" autocomplete="off" spellcheck="false" placeholder="type 'help', 'status', 'rag-query', 'docker-ps', 'metrics'..." />
+            </div>
+          </div>
+
+          <div class="terminal-chips-bar">
+            <span class="chips-label">QUICK DIRECTIVES:</span>
+            <button class="chip-btn" data-cmd="help">help</button>
+            <button class="chip-btn" data-cmd="status">status</button>
+            <button class="chip-btn" data-cmd="rag-query FastAPI pooling">rag-query FastAPI pooling</button>
+            <button class="chip-btn" data-cmd="docker-ps">docker-ps</button>
+            <button class="chip-btn" data-cmd="metrics">metrics</button>
+            <button class="chip-btn" data-cmd="contact">contact</button>
+            <button class="chip-btn" data-cmd="clear">clear</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Footer -->
+    <section id="contact" class="footer-section">
+      <div class="footer-content reveal">
+        <div class="section-tag" style="margin-bottom: 0.8rem;">DIRECT COMMUNICATIONS</div>
+        <h2 class="footer-headline font-display">
+          Ready to engineer something scalable?
+        </h2>
+
+        <p class="footer-desc">
+          Available for backend engineering internships, technical collaborations on RAG vector pipelines, and distributed Python architecture discussions.
+        </p>
+
+        <div class="footer-action-buttons">
+          <button id="copy-email-btn" class="copy-email-btn" title="Click to copy email address">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <span id="copy-email-text">Copy Email (sp59600638@gmail.com)</span>
+          </button>
+
+          <a href="mailto:sp59600638@gmail.com" class="btn-secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>Send Direct Message</span>
+          </a>
+
+          <a href="https://github.com/sp5900638-max" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 4.435 9.795 10.59 11.235.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span>GitHub Profile</span>
+          </a>
+        </div>
+
+        <div class="location-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-primary)" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Mysuru, Karnataka, India • 2nd Year CSE @ The National Institute of Engineering (NIE Mysuru)</span>
+        </div>
+
+        <div class="footer-bottom-row">
+          <div>© 2026 PRAVEEN • ENTERPRISE BACKEND ARCHITECTURE</div>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <span style="color: #10b981;">● CLUSTER STATUS: HEALTHY</span>
+            <span>STATIC DARK-MODE SURFACES</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Architecture Blueprint Modal -->
+  <div id="arch-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <button id="modal-close-btn" class="modal-close-btn" aria-label="Close Architecture Modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+      </button>
+
+      <div id="modal-body">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-notification font-mono">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-primary)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span id="toast-msg">Email copied to clipboard!</span>
+  </div>
+
+  <!-- Main Entry Script -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
