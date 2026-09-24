@@ -1,0 +1,12 @@
+# robots.txt for Praveen.s Developer Portfolio
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /api/
+Disallow: /.git
+Disallow: /.env*
+Disallow: /admin
+Disallow: /dashboard
+
+# Security Policy
+Policy: https://github.com/sp5900638-max/Portfolio/.well-known/security.txt

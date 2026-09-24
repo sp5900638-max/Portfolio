@@ -26,25 +26,64 @@ export default function Contact() {
     message: '',
   });
 
+  const [honeypot, setHoneypot] = useState('');
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
+  // Security: Sanitize string to prevent Cross-Site Scripting (XSS)
+  const sanitizeString = (str) => {
+    if (!str) return '';
+    return str
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;')
+      .replace(/\//g, '&#x2F;');
+  };
+
   const validate = () => {
     const errs = {};
-    if (!formData.name.trim()) errs.name = 'Name is required';
-    if (!formData.email.trim()) {
+    const cleanName = formData.name.trim();
+    const cleanEmail = formData.email.trim();
+    const cleanSubject = formData.subject.trim();
+    const cleanMsg = formData.message.trim();
+
+    if (!cleanName) {
+      errs.name = 'Name is required';
+    } else if (cleanName.length > 70) {
+      errs.name = 'Name cannot exceed 70 characters';
+    }
+
+    if (!cleanEmail) {
       errs.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(cleanEmail)) {
       errs.email = 'Enter a valid email address';
+    } else if (cleanEmail.length > 90) {
+      errs.email = 'Email cannot exceed 90 characters';
     }
-    if (!formData.subject.trim()) errs.subject = 'Subject is required';
-    if (!formData.message.trim()) {
+
+    if (!cleanSubject) {
+      errs.subject = 'Subject is required';
+    } else if (cleanSubject.length > 120) {
+      errs.subject = 'Subject cannot exceed 120 characters';
+    }
+
+    if (!cleanMsg) {
       errs.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
+    } else if (cleanMsg.length < 10) {
       errs.message = 'Message must be at least 10 characters';
+    } else if (cleanMsg.length > 2000) {
+      errs.message = 'Message cannot exceed 2000 characters';
     }
+
+    // Security check: Flag dangerous script payloads
+    const dangerousPatterns = /<script|javascript:|onerror=|onload=|eval\(/i;
+    if (dangerousPatterns.test(formData.message) || dangerousPatterns.test(formData.subject) || dangerousPatterns.test(formData.name)) {
+      errs.message = 'Security Policy Violation: Injected script or execution pattern detected.';
+    }
+
     return errs;
   };
 
@@ -58,6 +97,31 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Security Check 1: Honeypot bot trap
+    if (honeypot) {
+      // Automated bot triggered hidden field — silently intercept
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setSubmitted(true);
+      }, 800);
+      return;
+    }
+
+    // Security Check 2: Client-side submission rate throttling (1 submission every 15s)
+    const now = Date.now();
+    try {
+      const lastSubmit = sessionStorage.getItem('last_portfolio_dispatch');
+      if (lastSubmit && now - parseInt(lastSubmit, 10) < 15000) {
+        setErrors({ message: 'Security Policy: Please wait 15 seconds before dispatching another message.' });
+        return;
+      }
+      sessionStorage.setItem('last_portfolio_dispatch', String(now));
+    } catch (err) {
+      // Session storage handling
+    }
+
     const errs = validate();
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
@@ -65,6 +129,14 @@ export default function Contact() {
     }
 
     setIsSubmitting(true);
+
+    // Sanitize payload before simulated delivery
+    const sanitizedPayload = {
+      name: sanitizeString(formData.name),
+      email: formData.email.trim(),
+      subject: sanitizeString(formData.subject),
+      message: sanitizeString(formData.message),
+    };
 
     // Simulate reliable form transmission
     setTimeout(() => {
@@ -303,6 +375,7 @@ export default function Contact() {
                     <input
                       type="text"
                       name="name"
+                      maxLength={70}
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="e.g. Alex Turing"
@@ -322,6 +395,7 @@ export default function Contact() {
                     <input
                       type="email"
                       name="email"
+                      maxLength={90}
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="e.g. alex@example.com"
@@ -343,6 +417,7 @@ export default function Contact() {
                   <input
                     type="text"
                     name="subject"
+                    maxLength={120}
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder="e.g. Backend Internship Opportunity / RAG Project Collaboration"
@@ -363,6 +438,7 @@ export default function Contact() {
                   <textarea
                     name="message"
                     rows="5"
+                    maxLength={2000}
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Describe your technical inquiry, project requirements, or team opportunity..."
@@ -373,6 +449,18 @@ export default function Contact() {
                   {errors.message && (
                     <p className="text-[11px] text-red-400 font-mono mt-1">{errors.message}</p>
                   )}
+                </div>
+
+                {/* Security Honeypot: Invisible to human users, traps automated bots */}
+                <div className="hidden opacity-0 pointer-events-none absolute -z-50" aria-hidden="true">
+                  <input
+                    type="text"
+                    name="website_url_hp"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
                 </div>
 
                 {/* Submit Button */}

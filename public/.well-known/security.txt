@@ -1,0 +1,10 @@
+# Security Vulnerability Reporting Policy for Praveen.s Portfolio
+# RFC 9116 Compliant Security Disclosure
+
+Contact: mailto:sp59600638@gmail.com
+Contact: https://github.com/sp5900638-max/Portfolio/issues
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://github.com/sp5900638-max/Portfolio/blob/main/public/.well-known/security.txt
+Policy: https://github.com/sp5900638-max/Portfolio/security/policy
+Acknowledgments: https://github.com/sp5900638-max/Portfolio/blob/main/README.md

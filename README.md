@@ -125,6 +125,15 @@ This portfolio is an enterprise-grade, single-page application built with modern
   - Connected vertical Experience & Education timeline + Resume view/print modal.
   - Lightbox galleries for Certifications and Life Beyond Tech.
   - Validated contact form with 1-click email copy and celebratory confetti.
+- **Enterprise Security Hardening & Active Firewall**:
+  - **Edge Request Proxy (`proxy.js`)**: Real-time inspection intercepting SQL injection, XSS payloads, path traversal (`../`), null-byte poison, and automated exploit scanners (`wp-admin`, `.env`, `phpmyadmin`) with immediate `403 Forbidden`.
+  - **HTTP Method Whitelist**: Enforces only `GET`, `HEAD`, `POST`, `OPTIONS` while rejecting malicious verb probing (`TRACE`, `DELETE`, `PUT`) with `405 Method Not Allowed`.
+  - **Sliding-Window IP Rate Limiter**: 120 req/min throttling per IP to eliminate scraping, brute-force attacks, and DDoS flooding.
+  - **Production Security Headers**: Strict Content-Security-Policy (CSP), HSTS (`max-age=63072000; preload`), `X-Frame-Options: DENY` (anti-clickjacking), `X-Content-Type-Options: nosniff`, and `Permissions-Policy`.
+  - **Anti-Fingerprinting**: Disabled `X-Powered-By: Next.js` header to mask underlying server frameworks from bot reconnaissance.
+  - **Contact Form Defenses**: Honeypot bot trap, submission frequency throttling, input sanitization escaping HTML entities, and payload length caps.
+  - **Payload Verification**: File uploads strictly guarded with MIME validation (`image/jpeg`, `image/png`, `image/webp`), 3MB memory limit, and base64 header signature checks.
+  - **RFC 9116 Compliance**: Official `/.well-known/security.txt` policy and hardened `robots.txt`.
 
 ---
 

@@ -37,22 +37,48 @@ export default function Hero() {
 
   const handlePhotoUpload = (e) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const result = event.target?.result;
-        if (result) {
-          setAvatarSrc(result);
-          setHasAvatarError(false);
-          try {
-            localStorage.setItem('praveen_custom_avatar', result);
-          } catch (err) {
-            console.warn('Storage limit reached for custom avatar');
-          }
-        }
-      };
-      reader.readAsDataURL(file);
+    if (!file) return;
+
+    // Security Check 1: Allowed MIME types only
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    if (!allowedTypes.includes(file.type.toLowerCase())) {
+      alert('Security Policy: Only secure image formats (JPEG, PNG, WebP) are permitted.');
+      return;
     }
+
+    // Security Check 2: File size limit (Max 3MB to prevent memory exhaustion / DoS)
+    const MAX_SIZE_BYTES = 3 * 1024 * 1024;
+    if (file.size > MAX_SIZE_BYTES) {
+      alert('Security Policy: Image payload exceeds safe limit (Max 3MB).');
+      return;
+    }
+
+    // Security Check 3: Check for filename traversal / script extensions
+    if (/[<>\/\\:*?"|;%]/.test(file.name)) {
+      alert('Security Policy: Malformed or unsafe filename rejected.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const result = event.target?.result;
+      if (typeof result === 'string') {
+        // Security Check 4: Validate Data URI scheme matches image pattern
+        if (!/^data:image\/(jpeg|png|webp);base64,/i.test(result)) {
+          alert('Security Policy: Invalid image payload signature.');
+          return;
+        }
+
+        setAvatarSrc(result);
+        setHasAvatarError(false);
+        try {
+          localStorage.setItem('praveen_custom_avatar', result);
+        } catch (err) {
+          console.warn('Storage limit reached for custom avatar');
+        }
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   // Dynamic typewriter effect
