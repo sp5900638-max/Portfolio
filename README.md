@@ -5,7 +5,7 @@
 **Full Stack Developer | Python Backend Architect | AI & RAG Systems Enthusiast**  
 *2nd-Year B.E. Computer Science & Engineering at The National Institute of Engineering (NIE), Mysuru*
 
-[![Portfolio Status](https://img.shields.io/badge/Status-Live%20Online-00f5ff?style=for-the-badge&logo=vercel&logoColor=white)](http://localhost:3000)
+[![Portfolio Status](https://img.shields.io/badge/Status-Live%20Online-00f5ff?style=for-the-badge&logo=vercel&logoColor=white)](https://praveen-portfolio-nine-lemon.vercel.app)
 [![LeetCode Solved](https://img.shields.io/badge/LeetCode-400%2B%20Solved-FFA116?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/u/sp5900638-max)
 [![GitHub](https://img.shields.io/badge/GitHub-sp5900638--max-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sp5900638-max)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Praveen%20S-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/praveen-nie-cse)
