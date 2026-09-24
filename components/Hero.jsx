@@ -21,13 +21,17 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [avatarSrc, setAvatarSrc] = useState('/praveen.png');
+  const [avatarSrc, setAvatarSrc] = useState('/praveen-hacker.jpg');
   const [hasAvatarError, setHasAvatarError] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem('praveen_custom_avatar');
-    if (saved) {
-      setAvatarSrc(saved);
+    try {
+      const saved = localStorage.getItem('praveen_custom_avatar');
+      if (saved && saved.startsWith('data:image')) {
+        setAvatarSrc(saved);
+      }
+    } catch (e) {
+      // LocalStorage access
     }
   }, []);
 
@@ -124,13 +128,15 @@ export default function Hero() {
                       src={avatarSrc}
                       alt="Praveen - Developer Portrait"
                       onError={() => {
-                        if (avatarSrc !== 'https://github.com/sp5900638-max.png') {
+                        if (avatarSrc !== '/praveen.png') {
+                          setAvatarSrc('/praveen.png');
+                        } else if (avatarSrc !== 'https://github.com/sp5900638-max.png') {
                           setAvatarSrc('https://github.com/sp5900638-max.png');
                         } else {
                           setHasAvatarError(true);
                         }
                       }}
-                      className="w-full h-full object-cover object-center grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700"
+                      className="w-full h-full object-cover object-center filter brightness-100 contrast-105 group-hover:scale-105 transition-all duration-700"
                     />
                   ) : (
                     /* Futuristic Holographic Monogram */

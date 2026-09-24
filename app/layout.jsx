@@ -17,6 +17,8 @@ export default function RootLayout({ children }) {
     <html lang="en" className="dark scroll-smooth">
       <head>
         <link rel="preload" href="/hacker-intro.jpg" as="image" />
+        <link rel="preload" href="/praveen-hacker.jpg" as="image" />
+        <link rel="preload" href="/praveen.png" as="image" />
       </head>
       <body className="bg-light-bg dark:bg-[#07090e] text-slate-900 dark:text-slate-100 min-h-screen antialiased selection:bg-cyan-500/30 selection:text-cyan-accent">
         <ThemeProvider>
