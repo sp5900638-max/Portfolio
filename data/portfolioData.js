@@ -5,12 +5,12 @@ export const personalInfo = {
     "Full Stack Developer",
     "Python Backend Architect",
     "RAG & Vector Search Engineer",
-    "Competitive Programmer (400+ Solved)",
+    "Competitive Programmer (40+ Solved)",
     "B.E. CSE @ NIE Mysuru"
   ],
   institution: "The National Institute of Engineering (NIE), Mysuru",
   program: "Bachelor of Engineering in Computer Science & Engineering",
-  year: "2nd Year Undergraduate (Class of 2027)",
+  year: "2nd Year Undergraduate ",
   location: "Mysuru, Karnataka, India",
   email: "sp59600638@gmail.com",
   github: "https://github.com/sp5900638-max",
@@ -18,12 +18,12 @@ export const personalInfo = {
   leetcode: "https://leetcode.com/u/sp5900638-max",
   codeforces: "https://codeforces.com/profile/sp5900638_max",
   bio: "Passionate 2nd-year Computer Science undergraduate at The National Institute of Engineering (NIE), Mysuru. Driven by solving complex algorithmic challenges and architecting deterministic, high-throughput backend systems. I specialize in Python microservices, FastAPI, Qdrant RAG vector retrieval, and scalable full-stack applications with Next.js and Tailwind CSS.",
-  detailedBio: "I thrive at the intersection of algorithmic efficiency and production software engineering. Having solved over 400+ LeetCode problems, I bring rigorous data structure and optimization habits to building sub-40ms REST APIs, resilient Docker microservices, and AI-powered semantic search engines. When I'm not writing code or analyzing time complexities, I explore landscape photography across Karnataka and tinker with open-source systems.",
+  detailedBio: "I thrive at the intersection of algorithmic efficiency and production software engineering. Having solved over 40+ LeetCode problems, I bring rigorous data structure and optimization habits to building sub-40ms REST APIs, resilient Docker microservices, and AI-powered semantic search engines. When I'm not writing code or analyzing time complexities, I explore landscape photography across Karnataka and tinker with open-source systems.",
 };
 
 export const stats = [
   {
-    value: 400,
+    value: 40,
     suffix: "+",
     label: "LeetCode Solved",
     sublabel: "Data Structures & Algorithms",
