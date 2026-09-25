@@ -20,9 +20,9 @@
 
 ## 👨‍💻 About Praveen
 
-I am a passionate 2nd-year Computer Science undergraduate at **The National Institute of Engineering (NIE), Mysuru** (Class of 2027). Driven by solving complex algorithmic challenges and architecting deterministic, high-throughput software systems, I specialize in **Python microservices**, **FastAPI**, **Qdrant RAG vector retrieval**, and scalable full-stack applications with **Next.js** and **Tailwind CSS**.
+I am a passionate 2nd-year Computer Science undergraduate at **The National Institute of Engineering (NIE), Mysuru**. Driven by solving complex algorithmic challenges and architecting deterministic, high-throughput software systems, I specialize in **Python microservices**, **FastAPI**, **Qdrant RAG vector retrieval**, and scalable full-stack applications with **Next.js** and **Tailwind CSS**.
 
-With **400+ LeetCode problems solved**, I bring algorithmic rigor and performance-oriented habits to building sub-40ms REST APIs, resilient Docker microservices, and AI-driven semantic search engines.
+With **40+ LeetCode problems solved**, I bring algorithmic rigor and performance-oriented habits to building sub-40ms REST APIs, resilient Docker microservices, and AI-driven semantic search engines.
 
 ---
 
@@ -30,7 +30,7 @@ With **400+ LeetCode problems solved**, I bring algorithmic rigor and performanc
 
 | Metric | Value | Focus Area |
 | :--- | :--- | :--- |
-| 🧩 **LeetCode Problems** | **400+ Solved** | Data Structures & Algorithms (Trees, Graphs, DP, Sorting) |
+| 🧩 **LeetCode Problems** | **40+ Solved** | Data Structures & Algorithms (Trees, Graphs, DP, Sorting) |
 | 🚀 **Projects Built** | **15+ Shipped** | Full-Stack Applications, AI/RAG Engines, Microservices |
 | ⏱️ **Engineering Experience** | **2+ Years** | Hands-on production-grade software development |
 | 🛡️ **System Reliability** | **99.9% Uptime** | Deterministic error handling, rate limiting, and connection pooling |
